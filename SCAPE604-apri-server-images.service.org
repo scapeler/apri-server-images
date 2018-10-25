@@ -1,0 +1,9 @@
+[Unit]
+Desription=SCAPE604-apri-server-images - start or restart apri-server-images service, respawn
+After=network.target
+[Service]
+ExecStart=/opt/SCAPE604/apri-sever-images/apri-server-images.sh /opt/SCAPE604/log/SCAPE604-apri-server-omages.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
