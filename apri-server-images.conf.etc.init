@@ -1,0 +1,11 @@
+# SCAPE604-apri-server-images - start or restart apri-server-images service
+#
+#
+
+description     "(re)start apri-server-images service"
+start on runlevel [2345]
+respawn
+task
+script
+   exec /opt/SCAPE604/apri-server-images/apri-server-images.sh /opt/SCAPE604/log/SCAPE604-apri-server-images.log
+end script
