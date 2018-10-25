@@ -76,7 +76,8 @@ app.get('/'+apriConfig.systemCode+'/', function(req, res) {
 app.get('/'+apriConfig.systemCode+'/images/R/*.png', function(req, res) {
   //console.log("YUI request: " + req.url );
   try {
-    var _jsFile=fs.readFileSync(systemFolderRoot + req.url);
+    var url = req.url.replace(/\.\./gi,'');
+    var _jsFile=fs.readFileSync(systemFolderRoot + url);
     res.contentType('image/png');
     res.send(_jsFile);
   }
