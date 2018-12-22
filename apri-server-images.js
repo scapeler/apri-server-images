@@ -89,6 +89,22 @@ app.get('/'+apriConfig.systemCode+'/images/R/*.png', function(req, res) {
 
 });
 
+// handling of different filetypes in graphviz folder
+app.get('/'+apriConfig.systemCode+'/images/graphviz/*.png', function(req, res) {
+  //console.log("YUI request: " + req.url );
+  try {
+    var url = req.url.replace(/\.\./gi,'');
+    var _jsFile=fs.readFileSync(systemFolderRoot + url);
+    res.contentType('image/png');
+    res.send(_jsFile);
+  }
+  catch(error) {
+    //console.error(error);
+    console.error('image not found: '+ systemFolderRoot+req.url);
+    res.send('Image not found');
+  }
+
+});
 
 
 var getLocalFile = function(req, res, options) {
