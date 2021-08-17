@@ -103,7 +103,20 @@ app.get('/'+apriConfig.systemCode+'/images/graphviz/*.png', function(req, res) {
     console.error('image not found: '+ systemFolderRoot+req.url);
     res.send('Image not found');
   }
+});
 
+app.get('/'+apriConfig.systemCode+'/images/apri-sensor/*.img', function(req, res) {
+  try {
+    var url = req.url.replace(/\.\./gi,'');
+    var _jsFile=fs.readFileSync(systemFolderRoot + url);
+    res.contentType('application/octet-stream');
+    res.send(_jsFile);
+  }
+  catch(error) {
+    //console.error(error);
+    console.error('image not found: '+ systemFolderRoot+req.url);
+    res.send('Image not found');
+  }
 });
 
 // handling of different filetypes in R folder
