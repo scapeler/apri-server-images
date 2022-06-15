@@ -32,7 +32,10 @@ var logger={
     console.log(logmsg)
   },
   error:function(logmsg) {
-    console.erro(logmsg)
+    console.error(logmsg)
+  },
+  log:function(logmsg) {
+    console.log(logmsg)
   }
 }
 try {
