@@ -30,9 +30,9 @@ var winston
 var logger={
   info:function(logmsg) {
     console.log(logmsg)
-  }
+  },
   error:function(logmsg) {
-    console.error(logmsg)
+    console.erro(logmsg)
   }
 }
 try {
