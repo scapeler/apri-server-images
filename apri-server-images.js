@@ -69,7 +69,7 @@ try {
 catch (err) {
   logger.info('winston.createLogger error');
 }
-logger.info("Start of Config Main ", configServerModulePath);
+logger.info("Start of Config Main " + configServerModulePath);
 
 // add module specific requires
 var express 			= require('express');
