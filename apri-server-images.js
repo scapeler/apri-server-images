@@ -45,7 +45,7 @@ try {
     'transports': [
 //          new winston.transports.Console()
       new winston.transports.DailyRotateFile({
-          filename: 'aprisensor-raspi-%DATE%.log',
+          filename: 'SCAPE604-apri-server-images-%DATE%.log',
           dirname: '/var/log/aprisensor',
           datePattern: 'YYYY-MM-DD'//,
 //          maxSize: '20m',
