@@ -9,7 +9,6 @@ var path = require('path');
 var startFolder 			= __dirname;
 var startFolderParent		= path.resolve(__dirname,'..');
 var configServerModulePath	= startFolderParent + '/apri-server-config/apri-server-config';
-logger.info("Start of Config Main " + configServerModulePath);
 var apriConfig = require(configServerModulePath)
 
 var systemFolder 			= __dirname;
