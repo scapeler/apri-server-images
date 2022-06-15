@@ -9,7 +9,7 @@ var path = require('path');
 var startFolder 			= __dirname;
 var startFolderParent		= path.resolve(__dirname,'..');
 var configServerModulePath	= startFolderParent + '/apri-server-config/apri-server-config';
-logger.info("Start of Config Main ", configServerModulePath);
+logger.info("Start of Config Main " + configServerModulePath);
 var apriConfig = require(configServerModulePath)
 
 var systemFolder 			= __dirname;
@@ -18,10 +18,6 @@ var systemFolderRoot		= path.resolve(systemFolderParent,'..');
 var systemModuleFolderName 	= path.basename(systemFolder);
 var systemModuleName 		= path.basename(__filename);
 var systemBaseCode 			= path.basename(systemFolderParent);
-
-//logger.info('systemFolder', systemFolder);  				// systemFolder /opt/TSCAP-550/node-apri
-//logger.info('systemFolderParent', systemFolderParent);  	// systemFolderParent /opt/TSCAP-550
-//logger.info('systemFolderRoot', systemFolderRoot);  	// systemFolderRoot   /opt
 
 var initResult = apriConfig.init(systemModuleFolderName+"/"+systemModuleName);
 
@@ -186,12 +182,9 @@ function StreamBuffer(req) {
   var onend  = null
 
   self.ondata = function(f) {
-    //logger.info("self.ondata")
     for(var i = 0; i < buffer.length; i++ ) {
       f(buffer[i])
-  //    logger.info(i);
     }
-  //  logger.info(f);
     ondata = f
   }
 
@@ -220,7 +213,6 @@ function StreamBuffer(req) {
   })
 
   req.on('end', function() {
-    //logger.info("req.on end")
     ended = true;
     nrTransactions--;
     var _reqBody=JSON.parse(req.body);
