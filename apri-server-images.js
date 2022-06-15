@@ -113,7 +113,7 @@ app.get('/'+apriConfig.systemCode+'/images/R/*.png', function(req, res) {
     res.send(_jsFile);
   }
   catch(error) {
-    logger.error('image not found: '+ systemFolderRoot+req.url);
+    logger.log('error','image not found: '+ systemFolderRoot+req.url);
     res.send('Image not found');
   }
 
@@ -128,7 +128,7 @@ app.get('/'+apriConfig.systemCode+'/images/graphviz/*.png', function(req, res) {
     res.send(_jsFile);
   }
   catch(error) {
-    logger.error('image not found: '+ systemFolderRoot+req.url);
+    logger.log('error','image not found: '+ systemFolderRoot+req.url);
     res.send('Image not found');
   }
 });
@@ -141,7 +141,7 @@ app.get('/'+apriConfig.systemCode+'/images/apri-sensor/*.img', function(req, res
     res.send(_jsFile);
   }
   catch(error) {
-    logger.error('image not found: '+ systemFolderRoot+req.url);
+    logger.log('error','image not found: '+ systemFolderRoot+req.url);
     res.send('Image not found');
   }
 });
@@ -155,7 +155,7 @@ app.get('/'+apriConfig.systemCode+'/images/logo/*.ai', function(req, res) {
     res.send(_jsFile);
   }
   catch(error) {
-    logger.error('image not found: '+ systemFolderRoot+req.url);
+    logger.log('error','image not found: '+ systemFolderRoot+req.url);
     res.send('Image not found');
   }
 
@@ -165,7 +165,7 @@ var getLocalFile = function(req, res, options) {
 	logger.info("Apri /*.extension request: " + req.url );
 	fs.readFile(systemFolderRoot + req.url, function(err, data){
 		if (err) {
-			logger.error(err);
+			logger.log('error',err);
 		}
 		res.contentType(options.contentType);
 		res.send(data);
