@@ -85,7 +85,8 @@ try {
   logger = winston.createLogger(logConfiguration);
 }
 catch (err) {
-  logger.info('winston.createLogger error');
+  logger.error('winston.createLogger error');
+  logger.error(error);  
 }
 logger.info("Start of Config Main " + configServerModulePath);
 
