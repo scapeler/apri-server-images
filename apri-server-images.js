@@ -26,7 +26,6 @@ var apriClientName 		= '';  // defaults to apriClientSysName
 // **********************************************************************************
 
 var logConfiguration = {}
-var winston
 var logger={
   info:function(logmsg) {
     console.log(logmsg)
@@ -38,13 +37,9 @@ var logger={
     console.log(logmsg)
   }
 }
-try {
-  winston = require('winston')
-  require('winston-daily-rotate-file')
-}
-catch (err) {
-  logger.info('winston module (log) not found');
-}
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, json } = format;
+require('winston-daily-rotate-file')
 
 try {
   logConfiguration = {
@@ -66,27 +61,20 @@ try {
       json(),
     ),
     transports: [
-//          new winston.transports.Console()
-      new winston.transports.DailyRotateFile({
+      new transports.DailyRotateFile({
           filename: 'SCAPE604-apri-server-images-%DATE%.log',
           dirname: '/var/log/aprisensor',
           datePattern: 'YYYY-MM-DD'//,
 //          maxSize: '20m',
 //          maxFiles: '1d'
         })
-/*      new winston.transports.File({
-            //level: 'error',
-            // Create the log directory if it does not exist
-            filename: '/var/log/aprisensor/aprisensor.log'
-      })
-*/
     ]
   };
-  logger = winston.createLogger(logConfiguration);
+  logger = createLogger(logConfiguration);
 }
 catch (err) {
   logger.error('winston.createLogger error');
-  logger.error(err);  
+  logger.error(err);
 }
 logger.info("Start of Config Main " + configServerModulePath);
 
