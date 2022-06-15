@@ -42,7 +42,13 @@ catch (err) {
 
 try {
   logConfiguration = {
-    'transports': [
+    format: combine(
+      timestamp({
+        format: 'YYYY-MM-DD HH:mm:ss'
+      }),
+      json(),
+    ),
+    transports: [
 //          new winston.transports.Console()
       new winston.transports.DailyRotateFile({
           filename: 'SCAPE604-apri-server-images-%DATE%.log',
